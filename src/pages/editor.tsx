@@ -1,7 +1,9 @@
 import * as React from "react";
 import styled from "styled-components";
-import { setTextRange } from "typescript";
 import { useStateWithStorage } from "../hooks/use_state_with_storage";
+import * as ReactMarkdown from "react-markdown";
+
+const { useState } = React
 
 const Header = styled.header`
   font-size: 1.5rem;
@@ -60,7 +62,9 @@ export const Editor: React.FC = () => {
           onChange={(event) => setText(event.target.value)}
           value={text}
           />
-        <Preview>プレビュー</Preview>
+        <Preview>
+          <ReactMarkdown source={text} />
+        </Preview>
       </Wrapper>
     </>
   )
